@@ -32,7 +32,7 @@ const OrderProduct = ({item, handleQuantity, handleRemove}) => {
                     </button>
                 </div>
                 <div className="col-3 border border-white">
-                    <p className="productValue">${ item.price *item.amount } </p>
+                    <p className="productValue">${ item.price * item.amount } </p>
                 </div>
 
             </div>

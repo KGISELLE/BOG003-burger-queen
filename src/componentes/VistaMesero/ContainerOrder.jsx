@@ -1,8 +1,10 @@
 import React from 'react';
 import OrderProduct from './SumaOrder.jsx';
 import { createOrder } from '../../firebase/firestore.js'
+import Alert from './Alert.jsx';
 import swal from 'sweetalert';
-import Form from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form';
+
 
  const ContainerOrder = ({handleQuantity, handleRemove, state, setState, objOrder }) => {
     const sumTotal = (products) => {
@@ -22,11 +24,18 @@ import Form from 'react-bootstrap/Form'
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        state.PriceTotal = sumTotal(state.products)
         dataStore(state);
     };
 
+    const handleCancel = () => {
+      const cleanOrder = () => {
+        setState(objOrder)
+      }
+      Alert('¿Seguro que quieres cancelar el pedido?', 'error', true, 'Pedido cancelado', cleanOrder)
+    };
+
     return (
-        <div>
         <form className="container-fluid" onSubmit={handleSubmit}>
           {/*  Sección para input cliente y mesa */}
           <div className="row">
@@ -67,33 +76,42 @@ import Form from 'react-bootstrap/Form'
                   handleRemove={handleRemove}
                 />
               ))}
-              <h3 className="total-value">Total:  $ {sumTotal(state.products)} </h3>
+              {state.products.length > 0 ?
+                <h3 className="total-value">Total:  $ {sumTotal(state.products)} </h3>
+                : <h3>Aún no agregas productos</h3>
+              }
 
             </aside>
           </section>
 
-          <button className="btn btn-warning mt-3 btn-lg" onClick={() => {
-            if (!state.customer.trim()) {
-              swal("Falta completar el nombre del cliente", "", "error");
-            } else if (!state.table) {
-              swal("Falta completar número de mesa", "", "error");
+          <div>
+            {
+              state.products.length > 0 ?
+                <>
+                  <button className="deleteBotton btn btn-danger m-4"
+                    onClick={e => {
+                      e.preventDefault()
+                      handleCancel()}}>
+                    ✖️ Cancelar pedido
+                  </button>
+                  <button className="btn btn-warning mt-3 btn-lg" onClick={() => {
+                    if (!state.customer.trim()) {
+                      swal("Falta completar el nombre del cliente", "", "error");
+                    } else if (!state.table) {
+                      swal("Falta completar número de mesa", "", "error");
+                    }
+                    else {
+                      swal("Excelente", "Orden registrada", "success");
+                    }
+                  }}>
+                    👩‍🍳 Enviar a cocina
+                  </button>
+                </>
+                : ''
             }
-            else {
-              swal("Excelente", "Orden registrada", "success");
-            }
-          }} >
-            👩‍🍳 Enviar a cocina
-          </button>
+
+          </div>
         </form>
-          
-        {/*  Boton para cancelar pedido */}
-        <form class="position-absolute end-0">
-          <button className="deleteBotton btn btn-danger m-4" onClick={() =>{
-          }} >
-          ✖️Cancelar Pedido
-          </button>  
-        </form>
-        </div>
       );
     };
 

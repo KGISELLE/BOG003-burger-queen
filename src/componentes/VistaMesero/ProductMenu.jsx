@@ -11,6 +11,7 @@ const Product = ({state, handleQuantity,selectProduct, product}) => {
         }
     }
 
+    
     return(
         <div className="container-fluid">
             <div className="row border-bottom border-primary">

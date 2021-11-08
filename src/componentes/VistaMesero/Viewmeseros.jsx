@@ -1,16 +1,23 @@
 import React, {useState} from 'react';
 import HeaderLogo from '../header_logo';
 import ContainerOrder from './ContainerOrder';
-//import FormCustomer from './Form_cliente';
 import ProductsContainer from './ProductsContainerMenu';
+import NavOrder from './NavOrder';
+import { orderTime, orderDate, orderDateTime, } from '../../firebase/firestore'
+
 
 
 const ViewMesero = () => {
 
   const objOrder = {
-    customer: "",
-    table: "",
+    customer: '',
+    table: '',
     products: [],
+    status: 'OrderPending',
+    dateInit: orderDate(),
+    timeInit: orderTime(),
+    orderDateTime: orderDateTime(),
+    PriceTotal: 0,
   
   }
   const [state, setState] = useState(objOrder)
@@ -44,7 +51,7 @@ return(
     <header>
     <HeaderLogo/>
     </header>
-
+      <NavOrder/>
     <article className="container-fluid">
       <div className="row mt-3" >
         <div className="col-12 col-md-12 col-lg-6">
