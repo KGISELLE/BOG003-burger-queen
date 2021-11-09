@@ -124,7 +124,10 @@ label{
     border-radius: 10px;
     color: #FFFFFF;
     font-family: insanibu;
+    text-align: center;
 }
+
+
 
 .nav-item{
     border: 1px solid #FFFFFF;
@@ -193,9 +196,10 @@ label{
 
 /* ? estilos textos contenedor resumen del pedido*/
 h3{
-    font-size: 25px;
+    font-size: 20px;
     font-family: insanibu;
     color: #FFFFFF;
+    text-align: center;
 }
 
 h4{
@@ -234,6 +238,69 @@ h4{
 }
 
 /* ! Fin estilos contenedor resumen del pedido*/
+
+
+/* ! estilos navbar estado pedidos*/
+.nav-link{
+    background-color: brown;
+}
+
+.nav-link:hover{
+    background-color: rgb(184, 159, 18);
+}
+
+
+.nav-link a{
+    text-decoration: none;
+    outline: none;
+    color: whitesmoke;
+    text-align: center;
+}
+
+/* ! estilos tarjetas info estados pedidos vista mesero*/
+.card-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.card{
+    background-color: rgba(200, 54, 53, 0.85);
+}
+
+.container-date{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.card-text{
+    font-size: 17px;
+    line-height : 10px;
+    font-family:monospace;
+    font-weight: bolder;
+}
+
+.text-center{
+    color: whitesmoke;
+    font-size: 15px;
+    font-family:monospace;
+}
+
+
+/* ! estilos tarjetas info estados pedidos vista chef*/
+.container-card-text{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: -20px;
+}
+
+/* ! estilos tarjetas info estados terminado vista chef*/
+.card-delivered{
+    background-color: rgba(99, 96, 92, 0.781);
+    border-radius: 5px;
+}
 
 
 /*Estilo para tablet vertical mediaQuery*/

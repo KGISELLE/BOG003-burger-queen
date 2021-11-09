@@ -60,7 +60,7 @@ import Form from 'react-bootstrap/Form';
               />
             </div>
           </div>
-          <h3 className="border-bottom border-light text-center">Resumen del pedido</h3>
+          <h3 className="border-bottom border-light">Resumen del pedido</h3>
           <section className="orderDetails">
             <div className="row">
               <h4 className="col-4 border border-white">Productos</h4>

@@ -18,7 +18,7 @@ import HeaderLogo from '../header_logo';
     <section>
       <HeaderLogo/>
       <ChefNav />
-      <article className="statusCard">
+      <article className="card-container">
         {ordersR.length > 0
           ? ordersR.map((orderD) => (
               <TemplateOrderDelivered

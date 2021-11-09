@@ -22,7 +22,7 @@ const StatusOrder = () => {
         <section>
             <HeaderLogo/>
           <NavOrder />
-          <article className="">
+          <article className="card-container">
               
             {
               ordersCooked.length > 0

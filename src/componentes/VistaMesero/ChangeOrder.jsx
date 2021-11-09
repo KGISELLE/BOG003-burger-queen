@@ -21,42 +21,58 @@ import { updateStatusOrder  } from '../../firebase/firestore'
     <>
       {
         (orderToCooked.status === 'OrderPending' || orderToCooked.status === 'OrderReady') ?
-          <section>
-            <h3>Mesa Nª{orderToCooked.table}</h3>
-            <div>
-              <p>Cliente:{orderToCooked.customer}</p>
-              <p><b>Fecha: </b>{orderToCooked.dateInit}</p>
-              <p><b>Hora: </b>{orderToCooked.timeInit}</p>
-               
+          
+          <div class="card col-3 m-2" >
+            <div class="card-body">
+              <div className="container-date">
+                <p class="card-text">{orderToCooked.dateInit}</p>
+                <p class="card-text">{orderToCooked.timeInit}</p>
+              </div>
+              
+              <h4 class="card-title mt-2">Mesa No. {orderToCooked.table}</h4>
+              <p class="card-text mt-3">Cliente:  {orderToCooked.customer}</p>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th className="text-center" scope="col">CANT.</th>
+                    <th className="text-center" scope="col">PRODUCTOS</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  
+                    {orderToCooked.products ? orderToCooked.products.map((prod) => (
+                      <tr>
+                        <th className="text-center" scope="col">{prod.amount}</th>
+                        <th className="text-center" scope="col">{prod.name}</th>
+                      </tr>
+                    ))
+                    : null}
+                
+                </tbody>
+              </table>
+              
+              
+              <h4 className=""> Total: $ {orderToCooked.PriceTotal}</h4>
+              <button className="btn btn-warning mt-3"
+                id={chanceStatus(orderToCooked.status)}
+                onClick={() => foodReadyDeliver(orderToCooked.orderId, orderToCooked.status)}
+                disabled={
+                  orderToCooked.status === 'OrderPending' ? true : false
+                }
+              >
+                {
+                  orderToCooked.status === 'OrderPending' ? '👩‍🍳🥕🍳 Preparando orden' : '🤵🍽️ Listo para servir'
+                }
+              </button>
+
             </div>
-            <div>
-              {orderToCooked.products ? orderToCooked.products.map((prod) => (
-                <div>
-                  <p>{prod.amount}</p>
-                  <p>{prod.name}</p>
-                </div>
-              ))
-                : null}
-            </div>
-            <h4 className=""> Total: $ {orderToCooked.PriceTotal}</h4>
-            <button
-              className={chanceStatus(orderToCooked.status)}
-              onClick={() => foodReadyDeliver(orderToCooked.orderId, orderToCooked.status)}
-              disabled={
-                orderToCooked.status === 'OrderPending' ? true : false
-              }
-            >
-              {
-                orderToCooked.status === 'OrderPending' ? 'Preparando orden' : 'Listo para servir'
-              }
-            </button>
-          </section>
+          </div>
           : null
       }
     </>
   )
-
-
 
 }
 

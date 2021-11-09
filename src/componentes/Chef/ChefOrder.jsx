@@ -26,7 +26,7 @@ const ChefOrder = () => {
     <section>
         <HeaderLogo/>
       <ChefNav />
-      <article className="">
+      <article className="card-container">
         { orders.length > 0
           ? orders.map((order) => (
                <ChefChangeOrder
@@ -43,3 +43,4 @@ const ChefOrder = () => {
 };
 
 export default ChefOrder;
+

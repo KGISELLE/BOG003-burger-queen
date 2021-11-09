@@ -12,30 +12,38 @@ const ChefChangeOrder = ({ order, foodList }) => {
     <>
     {
       (order.status === 'OrderPending') ?
-      <aside className="">
-        <section>
-          <h3>Mesa #{order.table}</h3>
-          <div className="">
-            <p>Cliente:{order.customer}</p>
-           <p>Hora del pedido:{order.timeInit}</p> 
+      <aside className="card col-3 m-2">
+          <div className="container-card-text">
+            <img className='timer-kitchen' src={timerkitchen} alt='timer-kitchen' width="50px" />
+            <p class="card-text m-2">{order.timeInit}</p> 
           </div>
-          <div>
-            { order.products ?
-            order.products.map((product) => (
-              <div className="">
-              <p>{product.amount}</p>
-              <p>{product.name}</p>
-            </div>
-            )): null}
-          </div><br />
-        </section>
-        <div>
-        <p>
-        
-          <img className='timer-kitchen' src={timerkitchen} alt='timer-kitchen' />
-        </p>
-        </div>
-        <button onClick={()=> foodList(order)}>Orden lista</button>
+          <h4 class="card-title mt-2">Mesa #{order.table}</h4>
+          <p class="card-text mt-3 mx-2">CLIENTE:{order.customer}</p>
+
+          <table class="table">
+              <>
+                <thead>
+                  <tr>
+                    <th className="text-center" scope="col">CANT.</th>
+                    <th className="text-center" scope="col">PRODUCTOS</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    {order.products ?
+                      order.products.map((product) => (
+                      <tr>
+                        <th className="text-center" scope="col">{product.amount}</th>
+                        <th className="text-center" scope="col">{product.name}</th>
+                      </tr>
+                    ))
+                    : null}
+                
+                </tbody>
+            </>
+          </table>
+  
+        <button className="btn btn-warning m-2"onClick={()=> foodList(order)}>👌🍔🍲 Orden lista</button>
       </aside>
       : null
     }
@@ -44,3 +52,5 @@ const ChefChangeOrder = ({ order, foodList }) => {
 }
 
 export default ChefChangeOrder;
+
+

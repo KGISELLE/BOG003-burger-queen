@@ -18,7 +18,7 @@ import HeaderLogo from '../header_logo';
     <section>
       <HeaderLogo/>
       <NavOrder />
-      <article className="">
+      <div className="card-container">
         {ordersHistory.length > 0
           ? ordersHistory.map((orderD) => (
               <TemplateOrderDelivered
@@ -28,7 +28,7 @@ import HeaderLogo from '../header_logo';
             ))
           : null
         }
-      </article>
+      </div>
     </section>
   )
 }
