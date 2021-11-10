@@ -11,27 +11,9 @@ const ProductsContainer = ({selectProduct, state, handleQuantity }) => {
     const [products, setproducts] = useState(mainView);
     
     const productsType = (option) => {
-        // eslint-disable-next-line default-case
-        switch(option){
-            case "Desayuno":
-            const breakFast = data.filter((element) => element.type === option);
-            setproducts(breakFast);
-            break;
-            case "Hamburguesas":
-            const burgers = data.filter((element) => element.type === option);
-            setproducts(burgers);
-            break;
-            case "Acompañamientos":
-            const sidedish = data.filter((element) => element.type === option);
-            setproducts(sidedish);
-            break;
-            case "Bebidas":
-            const drinks = data.filter((element) => element.type === option);
-            setproducts(drinks);
-            break;
-        }
+        const products = data.filter((element) => element.type === option);
+        setproducts(products);
     };
-
 
     return(
         <section className="container-fluid">
