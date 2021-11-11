@@ -12,7 +12,7 @@ import { updateStatusOrder  } from '../../firebase/firestore'
     }
   }
 
-   const foodReadyDeliver = (id) => {
+  const foodReadyDeliver = (id) => {
     updateStatusOrder(id, orderToCooked.status = 'delivered')
     callParent()
   }; 
