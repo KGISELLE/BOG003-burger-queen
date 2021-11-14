@@ -12,7 +12,7 @@ const ChefChangeOrder = ({ order, foodList }) => {
     <>
     {
       (order.status === 'OrderPending') ?
-      <aside className="card col-3 m-2">
+      <aside className="card col-md-3 col-lg-3 m-2">
           <div className="container-card-text">
             <img className='timer-kitchen' src={timerkitchen} alt='timer-kitchen' width="50px" />
             <p class="card-text m-2">{order.timeInit}</p> 

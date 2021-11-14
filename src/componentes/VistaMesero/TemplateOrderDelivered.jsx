@@ -5,7 +5,7 @@ const TemplateOrderDelivered = ({orderD}) => {
     <>
     {
       (orderD.status === "delivered") ? 
-          <aside className="card-delivered col-3 m-2">
+          <aside className="card-delivered col-md-4 col-lg-3 m-2">
             <h4 class="card-title m-4">Mesa #{orderD.table}</h4>
             <div>
               <p class="card-text m-2">Cliente: {orderD.customer}</p>

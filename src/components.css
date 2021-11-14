@@ -234,7 +234,8 @@ h4{
 
 .deleteBotton{
     position:relative;  
-    top:-62px; 
+    top:-62px;
+    left: -36px; 
 }
 
 /* ! Fin estilos contenedor resumen del pedido*/
@@ -276,7 +277,7 @@ h4{
 
 .card-text{
     font-size: 17px;
-    line-height : 10px;
+    line-height : 20px;
     font-family:monospace;
     font-weight: bolder;
 }
